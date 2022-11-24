@@ -1,0 +1,28 @@
+{
+  "id": "ac9b506f-bb64-47bd-b173-10a56aa4c221",
+  "name": "Helios App",
+  "publisher": "abra IT",
+  "version": "1.0.0.0",
+  "brief": "Helios App for Microsft Dynamics 365 Business Central",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "18.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50100
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "7.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
