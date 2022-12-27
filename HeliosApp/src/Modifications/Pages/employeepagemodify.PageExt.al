@@ -21,6 +21,7 @@ pageextension 50100 employee_page_modify extends "Employee Card"
         }
         modify("Phone No.")
         {
+            Visible = false;
             Description = 'Specifies the employee''s work phone number';
         }
 
@@ -67,8 +68,8 @@ pageextension 50100 employee_page_modify extends "Employee Card"
 
         modify("Cause of Inactivity Code")
         {
-            Caption = 'Lifecycle Status';
-            Description = 'Specifies the Lifecycle Status of the employee';
+            Caption = 'Inactivity Reason';
+            Description = 'Specifies the reason of Inactivity';
         }
 
         modify("Grounds for Term. Code")
@@ -103,12 +104,21 @@ pageextension 50100 employee_page_modify extends "Employee Card"
         {
             Visible = false;
         }
-
+        modify("Employee Posting Group")
+        {
+            Visible = false;
+        }
+        modify("Application Method")
+        {
+            Visible = false;
+        }
 
         addafter(Administration)
         {
             group("Equipment & Lab") { }
         }
+
+
 
         addafter("Job Title")
         {
@@ -124,13 +134,8 @@ pageextension 50100 employee_page_modify extends "Employee Card"
             {
                 ApplicationArea = All;
             }
-            /*
-                field("Lab Security Brief Last date"; rec."Lab Security Brief Last date")
-                {
-                    ApplicationArea = All;
-                }
-            */
         }
+
 
         addlast("Address & Contact")
         {
@@ -148,9 +153,19 @@ pageextension 50100 employee_page_modify extends "Employee Card"
             }
         }
 
-        addlast(Administration)
+        addafter(Status)
         {
+            field("Insurance Employee Type"; rec."Insurance Employee Type")
+            {
+                ApplicationArea = All;
+            }
             field("Current Lifecycle Status"; Rec."Current Lifecycle Status")
+            {
+                ApplicationArea = All;
+
+            }
+
+            field("Contract Type"; rec."Contract Type")
             {
                 ApplicationArea = All;
             }
@@ -159,14 +174,25 @@ pageextension 50100 employee_page_modify extends "Employee Card"
             {
                 ApplicationArea = All;
             }
-            field("Contract Type"; rec."Contract Type")
+
+
+            field("Current Employment Per."; rec."Current Employment Per.")
             {
                 ApplicationArea = All;
             }
+
+            field("IT Security Brief Last date"; rec."IT Security Brief Last date")
+            {
+                ApplicationArea = All;
+            }
+
             field("Termination Notice Date"; Rec."Termination Notice Date")
             {
                 ApplicationArea = All;
             }
+
+
+
             field("Termination Reason"; rec."Termination Reason")
             {
                 ApplicationArea = All;
@@ -175,7 +201,11 @@ pageextension 50100 employee_page_modify extends "Employee Card"
             {
                 ApplicationArea = All;
             }
+
+
         }
+
+        moveafter("Termination Notice Date"; "termination date", "Grounds for Term. Code")
 
         addlast(Personal)
         {
@@ -230,16 +260,23 @@ pageextension 50100 employee_page_modify extends "Employee Card"
             }
         }
 
+
+        addfirst(Payments)
+        {
+
+            field("bank name"; rec."Bank Name")
+            {
+                ApplicationArea = All;
+            }
+
+        }
         addlast(Payments)
         {
             field("Current Salary"; rec."Current Salary")
             {
                 ApplicationArea = All;
             }
-            field("Current Employment Per."; rec."Current Employment Per.")
-            {
-                ApplicationArea = All;
-            }
+
             field("Options Assigned"; rec."Options Assigned")
             {
                 ApplicationArea = All;
@@ -252,18 +289,16 @@ pageextension 50100 employee_page_modify extends "Employee Card"
             {
                 ApplicationArea = All;
             }
-            field("Is Executive Insurance"; rec."Is Executive Insurance")
-            {
-                ApplicationArea = All;
-            }
+
             field("Insurance Agent"; rec."Insurance Agent")
             {
                 ApplicationArea = All;
             }
-            field("Insurance Employee Type"; rec."Insurance Employee Type")
+            field("Is Executive Insurance"; rec."Is Executive Insurance")
             {
                 ApplicationArea = All;
             }
+
         }
     }
 }

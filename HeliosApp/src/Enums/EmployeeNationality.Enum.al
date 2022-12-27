@@ -33,5 +33,9 @@ enum 50011 "Employee Nationality"
     {
         Caption = 'Russian';
     }
+    value(7; "EU Citizenship")
+    {
+        Caption = 'EU Citizenship';
+    }
 
 }
