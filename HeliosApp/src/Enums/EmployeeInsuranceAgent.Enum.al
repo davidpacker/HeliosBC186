@@ -1,15 +1,23 @@
 enum 50007 "Employee Insurance Agent"
 {
-    value(0; "Agam Leaderim")
+
+    Extensible = true;
+    value(0; " ")
+    {
+        Caption = ' ';
+
+    }
+
+    value(1; "Agam Leaderim")
     {
         Caption = 'Agam Leaderim';
 
     }
-    value(1; "Globman")
+    value(2; "Globman")
     {
         Caption = 'Globman';
     }
-    value(2; other)
+    value(3; other)
     {
         Caption = 'other';
     }

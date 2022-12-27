@@ -1,6 +1,6 @@
 enum 50011 "Employee Nationality"
 {
-
+    Extensible = true;
     value(0; "Israeli")
     {
         Caption = 'Israeli';

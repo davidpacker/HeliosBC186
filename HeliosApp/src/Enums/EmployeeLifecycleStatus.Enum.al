@@ -1,14 +1,14 @@
 enum 50004 "Employee Lifecycle Status"
 {
-
-    value(0; Hired)
-    {
-        Caption = 'Hired';
-
-    }
-    value(1; Employed)
+    Extensible = true;
+    value(0; "Employed")
     {
         Caption = 'Employed';
+
+    }
+    value(1; "Hired")
+    {
+        Caption = 'Hired';
     }
     value(2; Terminated)
     {

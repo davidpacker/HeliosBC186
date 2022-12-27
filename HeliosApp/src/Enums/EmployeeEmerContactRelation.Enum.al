@@ -1,27 +1,33 @@
 enum 50003 "Employee Emer Contact Relation"
 {
-    value(0; Spouse)
+    Extensible = true;
+    value(0; " ")
+    {
+        Caption = ' ';
+
+    }
+    value(1; Spouse)
     {
         Caption = 'Spouse';
 
     }
-    value(1; Parents)
+    value(2; Parents)
     {
         Caption = 'Parents';
     }
-    value(2; Siblings)
+    value(3; Siblings)
     {
         Caption = 'Siblings';
     }
-    value(3; Children)
+    value(4; Children)
     {
         Caption = 'Children';
     }
-    value(4; Friends)
+    value(5; Friends)
     {
         Caption = 'Friends';
     }
-    value(5; Other)
+    value(6; Other)
     {
         Caption = 'Other';
     }

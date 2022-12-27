@@ -1,12 +1,18 @@
 enum 50008 "Employee Insurance type"
 {
 
-    value(0; "Lab Worker")
+    Extensible = true;
+    value(0; " ")
+    {
+        Caption = ' ';
+
+    }
+    value(1; "Lab Worker")
     {
         Caption = 'Lab Worker';
 
     }
-    value(1; "Administrative")
+    value(2; "Administrative")
     {
         Caption = 'Administrative';
     }
