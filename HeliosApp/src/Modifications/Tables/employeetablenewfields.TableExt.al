@@ -1,4 +1,4 @@
-tableextension 50000 employee_table_new_fields extends Employee
+tableextension 50000 "employee_table_new_fields" extends Employee
 {
     fields
     {
