@@ -202,9 +202,10 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             DataClassification = ToBeClassified;
         }
 
-        field(50034; "Bank Name"; enum "Bank List")
+        field(50034; "Bank Name"; Code[20])
         {
             Caption = 'Bank No.';
+            TableRelation = "Israel Banks".Code;
             DataClassification = ToBeClassified;
         }
 
