@@ -1,21 +1,28 @@
 enum 50002 "Employee Sub Department"
 {
+
     Extensible = true;
 
-    value(0; Iron)
+
+    value(0; " ")
+    {
+        Caption = ' ';
+
+    }
+    value(1; Iron)
     {
         Caption = 'Iron';
 
     }
-    value(1; Space)
+    value(2; Space)
     {
         Caption = 'Space';
     }
-    value(2; Marketing)
+    value(3; Marketing)
     {
         Caption = 'Marketing';
     }
-    value(3; General)
+    value(4; General)
     {
         Caption = 'General';
     }

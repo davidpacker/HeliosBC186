@@ -2,28 +2,33 @@ enum 50012 "Employee Education"
 {
     Extensible = true;
 
-    value(0; Highschool)
+    value(0; " ")
+    {
+        Caption = ' ';
+
+    }
+    value(1; Highschool)
     {
         Caption = 'Highschool';
 
     }
-    value(1; "BA")
+    value(2; "BA")
     {
         Caption = 'BA';
     }
-    value(2; Master)
+    value(3; Master)
     {
         Caption = 'Master';
     }
-    value(3; Doctorate)
+    value(4; Doctorate)
     {
         Caption = 'Doctorate';
     }
-    value(4; "Post-Doctorate")
+    value(5; "Post-Doctorate")
     {
         Caption = 'Post-Doctorate';
     }
-    value(5; Phd)
+    value(6; Phd)
     {
         Caption = 'Phd';
     }

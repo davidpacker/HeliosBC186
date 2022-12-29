@@ -1,5 +1,10 @@
 enum 50006 "Employee Employment Type"
 {
+
+    Extensible = true;
+
+
+
     value(0; Global)
     {
         Caption = 'Global';

@@ -1,35 +1,41 @@
 enum 50009 "Employee T-shirt Size"
 {
+    Extensible = true;
 
-    value(0; "XS")
+    value(0; " ")
+    {
+        Caption = ' ';
+    }
+
+    value(1; "XS")
     {
         Caption = 'XS';
 
     }
-    value(1; S)
+    value(2; S)
     {
         Caption = 'S';
     }
 
-    value(2; M)
+    value(3; M)
     {
         Caption = 'M';
 
     }
-    value(3; L)
+    value(4; L)
     {
         Caption = 'L';
     }
-    value(4; XL)
+    value(5; XL)
     {
         Caption = 'XL';
 
     }
-    value(5; XXL)
+    value(6; XXL)
     {
         Caption = 'XXL';
     }
-    value(6; XXXL)
+    value(7; XXXL)
     {
         Caption = 'XXXL';
     }

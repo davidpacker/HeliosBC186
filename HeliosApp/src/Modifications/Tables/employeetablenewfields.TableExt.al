@@ -1,4 +1,4 @@
-tableextension 50000 employee_table_new_fields extends Employee
+tableextension 50000 "employee_table_new_fields" extends Employee
 {
     fields
     {
@@ -68,6 +68,7 @@ tableextension 50000 employee_table_new_fields extends Employee
         {
             Caption = 'Screen ID Number';
             DataClassification = ToBeClassified;
+            Description = 'Equipment assigned to employee Home';
         }
         field(50012; "Is Work Shoes Assigned"; boolean)
         {
@@ -120,32 +121,26 @@ tableextension 50000 employee_table_new_fields extends Employee
             Caption = 'Insurance Agent';
             DataClassification = ToBeClassified;
         }
-
-
         field(50022; "Insurance Employee Type"; enum "Employee Insurance type")
         {
             Caption = 'Insurance Employee Type';
             DataClassification = ToBeClassified;
         }
-
         field(50023; "T-Shirt Size"; enum "Employee T-shirt Size")
         {
             Caption = 'T-Shirt Size';
             DataClassification = ToBeClassified;
         }
-
         field(50024; "Shoe Size"; enum "Employee Shoe Size")
         {
             Caption = 'Shoe Size';
             DataClassification = ToBeClassified;
         }
-
         field(50025; "Nationality 1"; enum "Employee Nationality")
         {
             Caption = 'Nationality 1';
             DataClassification = ToBeClassified;
         }
-
         field(50026; "Nationality 2"; enum "Employee Nationality")
         {
             Caption = 'Nationality 2';
@@ -183,5 +178,19 @@ tableextension 50000 employee_table_new_fields extends Employee
             Caption = 'Termination Notes';
             DataClassification = ToBeClassified;
         }
+
+        field(50033; "IT Security Brief Last date"; date)
+        {
+            Caption = 'IT Security Brief Last date';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50034; "Bank Name"; Code[20])
+        {
+            Caption = 'Bank No.';
+            TableRelation = "Israel Banks".Code;
+            DataClassification = ToBeClassified;
+        }
+
     }
 }

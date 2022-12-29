@@ -10,7 +10,14 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "id": "c6b8786e-fedc-4dcf-93f2-8748b413eb3d",
+      "publisher": "Prodware Israel",
+      "name": "Localisation Israel AL",
+      "version": "1.0.18.190"
+    }
+  ],
   "screenshots": [],
   "platform": "1.0.0.0",
   "application": "18.0.0.0",

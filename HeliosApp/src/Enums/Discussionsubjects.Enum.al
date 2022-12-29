@@ -2,35 +2,40 @@ enum 50000 "Discussion subjects"
 {
     Extensible = true;
 
-    value(0; Partnership)
+    value(0; " ")
+    {
+        Caption = ' ';
+
+    }
+    value(1; Partnership)
     {
         Caption = 'Partnership';
 
     }
-    value(1; Investment)
+    value(2; Investment)
     {
         Caption = 'Investment';
     }
-    value(2; commercial)
+    value(3; commercial)
     {
         Caption = 'commercial';
     }
-    value(3; Referral)
+    value(4; Referral)
     {
         Caption = 'Referral';
     }
-    value(4; "Project Funding")
+    value(5; "Project Funding")
     {
         Caption = 'Project Funding';
     }
 
-    value(5; Supplier)
+    value(6; Supplier)
     {
         Caption = 'Supplier';
 
     }
 
-    value(6; Customer)
+    value(7; Customer)
     {
         Caption = 'Customer';
     }

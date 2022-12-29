@@ -1,6 +1,6 @@
 enum 50005 "Employee Contract Type"
 {
-
+    Extensible = true;
     value(0; Employee)
     {
         Caption = 'Employee';
