@@ -1,4 +1,4 @@
-pageextension 50100 "employee_page_modify" extends "Employee Card"
+pageextension 50000 "employee_page_modify" extends "Employee Card"
 {
     layout
     {
