@@ -2,6 +2,7 @@ tableextension 50000 "employee_table_new_fields" extends Employee
 {
     fields
     {
+
         field(50000; "Department"; Enum "Employee Department")
         {
             Caption = 'Department';
@@ -13,6 +14,7 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             Caption = 'Sub-Department';
             DataClassification = ToBeClassified;
         }
+
         field(50002; "Reports To"; Text[30])
         {
             Caption = 'Reports To';
@@ -59,6 +61,7 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             Caption = 'Employment Type';
             DataClassification = ToBeClassified;
         }
+
         field(50010; "Laptop ID Number"; Text[50])
         {
             Caption = 'Laptop ID Number';
@@ -121,31 +124,43 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             Caption = 'Insurance Agent';
             DataClassification = ToBeClassified;
         }
+
+
+
         field(50022; "Insurance Employee Type"; enum "Employee Insurance type")
         {
             Caption = 'Insurance Employee Type';
             DataClassification = ToBeClassified;
         }
+
+
         field(50023; "T-Shirt Size"; enum "Employee T-shirt Size")
         {
             Caption = 'T-Shirt Size';
             DataClassification = ToBeClassified;
         }
+
+
         field(50024; "Shoe Size"; enum "Employee Shoe Size")
         {
             Caption = 'Shoe Size';
             DataClassification = ToBeClassified;
         }
+
+
         field(50025; "Nationality 1"; enum "Employee Nationality")
         {
             Caption = 'Nationality 1';
             DataClassification = ToBeClassified;
         }
+
+
         field(50026; "Nationality 2"; enum "Employee Nationality")
         {
             Caption = 'Nationality 2';
             DataClassification = ToBeClassified;
         }
+
         field(50027; "Passport ID"; integer)
         {
             Caption = 'Traveling Passport ID';
@@ -157,6 +172,7 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             Caption = 'Education level';
             DataClassification = ToBeClassified;
         }
+
         field(50029; "No. children"; integer)
         {
             Caption = 'No. children';
@@ -173,6 +189,7 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             Caption = 'Termination Reason';
             DataClassification = ToBeClassified;
         }
+
         field(50032; "Termination Notes"; text[300])
         {
             Caption = 'Termination Notes';
