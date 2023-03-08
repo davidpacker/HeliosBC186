@@ -258,6 +258,18 @@ pageextension 50000 "employee_page_modify" extends "Employee Card"
             {
                 ApplicationArea = All;
             }
+            field("Lab Radiation Brief Last date";Rec."Lab Radiation Brief Last date")
+            {
+                ApplicationArea = All;
+            }
+            field("First Aid Brief Last Date";Rec."First Aid Brief Last Date")
+            {
+                ApplicationArea = All;
+            }
+            field("Fire extinguishing Last Date";Rec."Fire extinguishing Last Date")
+            {
+                ApplicationArea = All;
+            }
         }
 
 
