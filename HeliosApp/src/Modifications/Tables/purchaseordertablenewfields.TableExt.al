@@ -1,4 +1,4 @@
-tableextension 50100 "purchase order table new field" extends "Purchase Header"
+tableextension 50010 "purchase order table new field" extends "Purchase Header"
 {
     fields
     {

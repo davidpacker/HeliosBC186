@@ -1,4 +1,4 @@
-enum 50052 "Purchase Order Payment Status"
+enum 50032 "Purchase Order Payment Status"
 {
     Extensible = true;
     // value(0; " ")

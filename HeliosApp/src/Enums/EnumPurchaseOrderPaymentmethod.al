@@ -1,4 +1,4 @@
-enum 50051 "Purchase Order Payment method"
+enum 50031 "Purchase Order Payment method"
 {
     Extensible = true;
     // value(0; " ")
@@ -13,7 +13,5 @@ enum 50051 "Purchase Order Payment method"
     {
         Caption = 'Credit Card';
     }
-
-    //TODO: decide if we need to add "Other" option 
 
 }

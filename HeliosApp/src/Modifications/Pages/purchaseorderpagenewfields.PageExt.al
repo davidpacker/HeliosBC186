@@ -132,7 +132,7 @@ pageextension 50010 "purchase order page new field" extends "Purchase Order"
         modify("Vendor Invoice No.")
         {
             Caption = 'Tax Invoice No.';
-            ShowMandatory = (rec."Tax Invoice Recieved" = rec."Tax Invoice Recieved"::"Yes - Attached");
+            ShowMandatory = (Rec."Tax Invoice Recieved" = Rec."Tax Invoice Recieved"::"Yes - Attached");
             //  Visible = isVisible;
         }
         movebefore("Vendor Invoice No."; "Vendor Order No.")

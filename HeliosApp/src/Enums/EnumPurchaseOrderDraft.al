@@ -1,4 +1,4 @@
-enum 50050 "Draft"
+enum 50030 "Draft"
 {
     Extensible = true;
     // value(0; " ")

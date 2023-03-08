@@ -1,4 +1,4 @@
-enum 50053 "Purchase Order Tax Invoice"
+enum 50033 "Purchase Order Tax Invoice"
 {
     Extensible = true;
     // value(0; " ")
