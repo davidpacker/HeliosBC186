@@ -209,5 +209,23 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             DataClassification = ToBeClassified;
         }
 
+        field(50035; "Lab Radiation Brief Last date"; date)
+        {
+            Caption = 'Lab Radiation Brief Last date';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50036; "First Aid Brief Last Date"; date)
+        {
+            Caption = 'First Aid Brief Last Date';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50037; "Fire extinguishing Last Date"; date)
+        {
+            Caption = 'Fire Extinguishing Brief Last Date';
+            DataClassification = ToBeClassified;
+        }
+
     }
 }
