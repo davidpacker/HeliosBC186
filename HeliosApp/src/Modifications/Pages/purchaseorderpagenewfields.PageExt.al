@@ -137,6 +137,15 @@ pageextension 50010 "purchase order page new field" extends "Purchase Order"
         }
         movebefore("Vendor Invoice No."; "Vendor Order No.")
 
+        modify("Proforma Invoice")
+        {
+            Visible = false;
+        }
+        modify("Language Code")
+        {
+            Visible = false;
+        }
+
 
         modify("Expected Receipt Date")
         {
