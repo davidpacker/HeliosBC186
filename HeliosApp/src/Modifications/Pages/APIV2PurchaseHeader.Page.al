@@ -4,7 +4,7 @@ page 50012 "APIV2 - Purchase Header"
 
     APIVersion = 'v2.0';
     APIPublisher = 'bcapi';
-    APIGroup = 'finance';
+    APIGroup = 'tables';
 
     EntityCaption = 'purchaseHeader';
     EntitySetCaption = 'purchaseHeaders';

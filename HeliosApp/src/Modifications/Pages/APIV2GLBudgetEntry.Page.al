@@ -4,7 +4,7 @@ page 50016 "APIV2 - G/L Budget Entry"
 
     APIVersion = 'v2.0';
     APIPublisher = 'bcapi';
-    APIGroup = 'finance';
+    APIGroup = 'tables';
 
     EntityCaption = 'GLBudgetEntry';
     EntitySetCaption = 'GLBudgetEntries';

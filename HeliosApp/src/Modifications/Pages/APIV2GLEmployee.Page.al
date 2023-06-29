@@ -4,7 +4,7 @@ page 50017 "APIV2 - Employee"
 
     APIVersion = 'v2.0';
     APIPublisher = 'bcapi';
-    APIGroup = 'HR';
+    APIGroup = 'tables';
 
     EntityCaption = 'Employee';
     EntitySetCaption = 'Employees';

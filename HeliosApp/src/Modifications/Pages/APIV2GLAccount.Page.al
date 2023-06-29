@@ -4,7 +4,7 @@ page 50014 "APIV2 - G/L Account"
 
     APIVersion = 'v2.0';
     APIPublisher = 'bcapi';
-    APIGroup = 'finance';
+    APIGroup = 'tables';
 
     EntityCaption = 'GLAccount';
     EntitySetCaption = 'GLAccounts';

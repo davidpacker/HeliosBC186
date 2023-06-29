@@ -4,7 +4,7 @@ page 50015 "APIV2 - Purchase Line"
 
     APIVersion = 'v2.0';
     APIPublisher = 'bcapi';
-    APIGroup = 'finance';
+    APIGroup = 'tables';
 
     EntityCaption = 'purchaseLine';
     EntitySetCaption = 'purchaseLines';
