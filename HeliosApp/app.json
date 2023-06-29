@@ -2,7 +2,7 @@
   "id": "ac9b506f-bb64-47bd-b173-10a56aa4c221",
   "name": "Helios App",
   "publisher": "abra IT",
-  "version": "18.0.0.4",
+  "version": "22.0.0.1",
   "brief": "Helios App for Microsft Dynamics 365 Business Central",
   "description": "",
   "privacyStatement": "",
@@ -12,23 +12,22 @@
   "logo": "",
   "dependencies": [
     {
-      "id": "c6b8786e-fedc-4dcf-93f2-8748b413eb3d",
-      "publisher": "Prodware Israel",
-      "name": "Localisation Israel AL",
-      "version": "1.0.18.190"
+      "id": "43591f51-81d6-4e26-8b39-0fbe3feebcf1",
+      "publisher": "abra IT",
+      "name": "LocalisationSaas",
+      "version": "22.0.0.0"
     }
   ],
   "screenshots": [],
-  "platform": "1.0.0.0",
-  "application": "18.0.0.0",
+  "platform": "22.0.0.0",
+  "application": "22.0.0.0",
   "idRanges": [
     {
       "from": 50000,
       "to": 50100
     }
   ],
-  "showMyCode": true,
-  "runtime": "7.0",
+  "runtime": "11.0",
   "features": [
     "NoImplicitWith"
   ]
