@@ -237,6 +237,26 @@ pageextension 50000 "employee_page_modify" extends "Employee Card"
             {
                 ApplicationArea = All;
             }
+            field("Food Allergies"; rec."Food Allergies")
+            {
+                ApplicationArea = All;
+            }
+            field("Is Kosher"; rec."Is Kosher")
+            {
+                ApplicationArea = All;
+            }
+            field("Is Vegan"; rec."Is Vegan")
+            {
+                ApplicationArea = All;
+            }
+            field("Is Vegetarian"; rec."Is Vegetarian")
+            {
+                ApplicationArea = All;
+            }
+            field("Is Ketogenic"; rec."Is Ketogenic")
+            {
+                ApplicationArea = All;
+            }
         }
 
 
@@ -312,5 +332,19 @@ pageextension 50000 "employee_page_modify" extends "Employee Card"
             }
 
         }
+        //addafter("No. Children")
+        //{
+        //   field("Child 1 Legal Gender"; Rec."Child 1 Legal Gender")
+        //    {
+        //        ApplicationArea = All;
+        //        Visible = Rec."No. Children" >= 1;
+        //    }
+        //    field("Child 1 Birth Date"; Rec."Child 1 Birth Date")
+        //    {
+        //        ApplicationArea = All;
+        //        Visible = Rec."No. Children" >= 1;
+        //    }
+        //    //Add similar fields for Child 2 to Child 5
+        //}
     }
 }

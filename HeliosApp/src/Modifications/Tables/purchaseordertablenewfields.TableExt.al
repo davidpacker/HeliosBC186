@@ -32,5 +32,10 @@ tableextension 50010 "purchase order table new field" extends "Purchase Header"
             Caption = 'Draft';
             DataClassification = ToBeClassified;
         }
+        field(50104; "Is Received"; Boolean)
+        {
+            Caption = 'Is Received';
+            DataClassification = ToBeClassified;
+        }
     }
 }
