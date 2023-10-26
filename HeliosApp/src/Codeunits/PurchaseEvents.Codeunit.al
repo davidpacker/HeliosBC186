@@ -23,11 +23,14 @@ codeunit 50002 "Purchase Events Helios"
     var
         PurchaseHeader: Record "Purchase Header";
     begin
-        if PurchaseHeader.FindSet() then
-            repeat
-                if (PurchaseHeader."Vendor Invoice No." = Rec."Vendor Invoice No.") and 
-                   (PurchaseHeader."No." <> Rec."No.") then
-                    Error('The Tax Invoice No. %1 already exists in another purchase order. %2', Rec."Vendor Invoice No.", PurchaseHeader."No.");
-            until PurchaseHeader.Next() = 0;
+        if Rec."Vendor Invoice No." = '' then
+            exit;
+        PurchaseHeader.SetLoadFields("Vendor Invoice No.", "No.");
+        PurchaseHeader.SetRange("Vendor Invoice No.", Rec."Vendor Invoice No.");
+        PurchaseHeader.SetFilter("No.", '<>%1', Rec."No.");
+        PurchaseHeader.ReadIsolation := IsolationLevel::ReadUncommitted;
+        if PurchaseHeader.FindFirst() then
+            Error('The Tax Invoice No. %1 already exists in another purchase order. %2', Rec."Vendor Invoice No.", PurchaseHeader."No.");
     end;
+
 }
