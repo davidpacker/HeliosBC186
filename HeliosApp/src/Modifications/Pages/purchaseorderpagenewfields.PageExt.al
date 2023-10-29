@@ -40,7 +40,17 @@ pageextension 50010 "purchase order page new field" extends "Purchase Order"
                 //     currpage.Update(false);
                 // end;
             }
-
+        }
+                addafter("Tax Invoice Received")
+        {
+            field("Is Received";Rec."Is Received")
+            {
+                ApplicationArea = all;
+                Caption = 'Is Received';
+                BlankZero = true;
+                ShowMandatory = true;
+                ToolTip = 'Specifies if the purchase order was received.';
+            }
         }
         addafter("Assigned User ID")
         {
@@ -229,7 +239,6 @@ pageextension 50010 "purchase order page new field" extends "Purchase Order"
         }
     }
 
-
     // trigger OnAfterGetCurrRecord()
     // begin
     //     if Rec."Tax Invoice Recieved" = Rec."Tax Invoice Recieved"::"No - Waiting to Receive" then
@@ -242,7 +251,7 @@ pageextension 50010 "purchase order page new field" extends "Purchase Order"
     // var
     //     isVisible: Boolean;
 
-
+    
 
 }
 

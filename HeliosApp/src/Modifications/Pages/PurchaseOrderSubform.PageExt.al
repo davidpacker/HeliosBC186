@@ -58,7 +58,11 @@ pageextension 50011 "purchase order subform" extends "Purchase Order Subform"
         {
             Visible = false;
         }
-
+        modify("VAT Prod. Posting Group")
+        {
+            Visible = true;
+        }
+        moveafter("Line Amount"; "VAT Prod. Posting Group") 
 
         moveafter("Description"; "Shortcut Dimension 1 Code")
 
@@ -86,4 +90,14 @@ pageextension 50011 "purchase order subform" extends "Purchase Order Subform"
         }
 
     }
+
+        trigger OnQueryClosePage(CloseAction: Action): Boolean
+        begin
+            if Rec."Shortcut Dimension 2 Code" = '' then begin
+                    Message('You must fill in the Code פעילות field before saving the record.');
+                    exit(false);
+            end;
+            exit(true);
+        end;
+        
 }

@@ -17,4 +17,20 @@ codeunit 50002 "Purchase Events Helios"
         ToPurchaseHeader."Assigned User ID" := UserId();
         if ToPurchaseHeader.Modify() then;
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeValidateEvent', 'Vendor Invoice No.', false, false)]
+    local procedure OnBeforeValidateTaxInvoiceNo(var Rec: Record "Purchase Header"; var xRec: Record "Purchase Header"; CurrFieldNo: Integer)
+    var
+        PurchaseHeader: Record "Purchase Header";
+    begin
+        if Rec."Vendor Invoice No." = '' then
+            exit;
+        PurchaseHeader.SetLoadFields("Vendor Invoice No.", "No.");
+        PurchaseHeader.SetRange("Vendor Invoice No.", Rec."Vendor Invoice No.");
+        PurchaseHeader.SetFilter("No.", '<>%1', Rec."No.");
+        PurchaseHeader.ReadIsolation := IsolationLevel::ReadUncommitted;
+        if PurchaseHeader.FindFirst() then
+            Error('The Tax Invoice No. %1 already exists in another purchase order. %2', Rec."Vendor Invoice No.", PurchaseHeader."No.");
+    end;
+
 }

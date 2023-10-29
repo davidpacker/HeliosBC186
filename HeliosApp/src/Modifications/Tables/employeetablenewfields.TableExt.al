@@ -227,5 +227,42 @@ tableextension 50000 "employee_table_new_fields" extends Employee
             DataClassification = ToBeClassified;
         }
 
+        field(50038; "Food Allergies"; Text[300])
+        {
+            Caption = 'Food Allergies';
+            DataClassification = ToBeClassified;
+        }
+        field(50039; "Is Kosher"; boolean)
+        {
+            Caption = 'Is Kosher';
+            DataClassification = ToBeClassified;
+        }
+        field(50040; "Is Vegetarian"; boolean)
+        {
+            Caption = 'Is Vegetarian';
+            DataClassification = ToBeClassified;
+        }
+        field(50041; "Is Vegan"; boolean)
+        {
+            Caption = 'Is Vegan';
+            DataClassification = ToBeClassified;
+        }
+        field(50042; "Is Ketogenic"; boolean)
+        {
+            Caption = 'Is Ketogenic';
+            DataClassification = ToBeClassified;
+        }
+        field(50043; "Child 1 Legal Gender"; Enum "Employee Children Gender")
+        {
+            Caption = 'Child 1 Legal Gender';
+            DataClassification = ToBeClassified;
+            Editable = true;
+        }
+        field(50044; "Child 1 Birth Date"; date)
+        {
+            Caption = 'Child 1 Birth Date';
+            DataClassification = ToBeClassified;
+            Editable = true;
+        }
     }
 }
