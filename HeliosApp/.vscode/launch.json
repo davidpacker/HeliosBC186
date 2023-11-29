@@ -2,21 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Your own server",
-            "request": "launch",
+            "name": "Publish: Microsoft cloud sandbox",
             "type": "al",
-            "environmentType": "OnPrem",
-            "server": "http://localhost",
-            "serverInstance": "BC180",
-            "authentication": "Windows",
+            "request": "launch",
+            "environmentType": "Sandbox",
+            "environmentName": "sandbox",
             "startupObjectId": 22,
-            "startupObjectType": "Page",
             "breakOnError": "All",
+            "breakOnRecordWrite": "None",
             "launchBrowser": true,
-            "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
-            "tenant": "default",
-            "port": 7049
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "tenant": "9e926e0e-8e98-4af9-aab8-cc4a18166ce8"
         }
+
     ]
 }
