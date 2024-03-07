@@ -80,7 +80,7 @@ page 50025 "APIV2 - FA Depreciation Book"
                 {
                     Caption = 'FA Posting Group';
                 }
-                 field(DepreciationEndingDate; Rec."Depreciation Ending Date")
+                field(DepreciationEndingDate; Rec."Depreciation Ending Date")
                 {
                     Caption = 'Depreciation Ending Date';
                 }
@@ -284,10 +284,6 @@ page 50025 "APIV2 - FA Depreciation Book"
                 {
                     Caption = 'Consumer Price Index2007';
                 }
-                field(DepreciationByForm2007; Rec."Depreciation By Form2007")
-                {
-                    Caption = 'Depreciation By Form2007';
-                }
                 field(SystemID; Rec."SystemID")
                 {
                     Caption = 'SystemID';
@@ -308,7 +304,7 @@ page 50025 "APIV2 - FA Depreciation Book"
                 {
                     Caption = 'Modified By';
                 }
-                
+
             }
         }
     }
