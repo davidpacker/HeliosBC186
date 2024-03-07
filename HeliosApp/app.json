@@ -2,7 +2,7 @@
   "id": "ac9b506f-bb64-47bd-b173-10a56aa4c221",
   "name": "Helios App",
   "publisher": "abra IT",
-  "version": "22.0.0.7",
+  "version": "22.0.0.9",
   "brief": "Helios App for Microsft Dynamics 365 Business Central",
   "description": "",
   "privacyStatement": "",
@@ -15,7 +15,7 @@
       "id": "43591f51-81d6-4e26-8b39-0fbe3feebcf1",
       "publisher": "abra IT",
       "name": "LocalisationSaas",
-      "version": "22.0.0.0"
+      "version": "23.1.0.4"
     },
     {
       "id": "485e93c9-796c-4aaa-a206-760fe3682d6c",
