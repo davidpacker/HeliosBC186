@@ -15,7 +15,8 @@
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10,
-            "tenant": "9e926e0e-8e98-4af9-aab8-cc4a18166ce8"
+            "tenant": "9e926e0e-8e98-4af9-aab8-cc4a18166ce8",
+            "schemaUpdateMode": "ForceSync"
         }
 
     ]
