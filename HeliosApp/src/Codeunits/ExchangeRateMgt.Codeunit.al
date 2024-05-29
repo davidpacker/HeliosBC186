@@ -69,12 +69,17 @@ codeunit 50010 "Exchange Rate Mgt"
     var
         GeneralLedgerSetup: Record "General Ledger Setup";
         GenJournalTemplate: Record "Gen. Journal Template";
+        SourceCodeSetup: Record "Source Code Setup";
     begin
-        if GenJnlLine."Journal Template Name" = '' then
-            exit;
-        GenJournalTemplate.Get(GenJnlLine."Journal Template Name");
-        if not (GenJournalTemplate.Type in [enum::"Gen. Journal Template Type"::General, Enum::"Gen. Journal Template Type"::Purchases, Enum::"Gen. Journal Template Type"::Assets]) then
-            exit;
+        SourceCodeSetup.Get();
+        if GenJnlLine."Journal Template Name" <> '' then begin
+            GenJournalTemplate.Get(GenJnlLine."Journal Template Name");
+            if not (GenJournalTemplate.Type in [enum::"Gen. Journal Template Type"::General, Enum::"Gen. Journal Template Type"::Purchases, Enum::"Gen. Journal Template Type"::Assets]) then
+                exit;
+        end else
+            if GenJnlLine."Source Code" <> SourceCodeSetup.Purchases then
+                exit;
+
         GeneralLedgerSetup.Get();
         if not GeneralLedgerSetup."Ex. Rate By Doc Date" then
             exit;
@@ -86,12 +91,17 @@ codeunit 50010 "Exchange Rate Mgt"
     var
         GeneralLedgerSetup: Record "General Ledger Setup";
         GenJournalTemplate: Record "Gen. Journal Template";
+        SourceCodeSetup: Record "Source Code Setup";
     begin
-        if GenJnlLine."Journal Template Name" = '' then
-            exit;
-        GenJournalTemplate.Get(GenJnlLine."Journal Template Name");
-        if not (GenJournalTemplate.Type in [enum::"Gen. Journal Template Type"::General, Enum::"Gen. Journal Template Type"::Purchases, Enum::"Gen. Journal Template Type"::Assets]) then
-            exit;
+        SourceCodeSetup.Get();
+        if GenJnlLine."Journal Template Name" <> '' then begin
+            GenJournalTemplate.Get(GenJnlLine."Journal Template Name");
+            if not (GenJournalTemplate.Type in [enum::"Gen. Journal Template Type"::General, Enum::"Gen. Journal Template Type"::Purchases, Enum::"Gen. Journal Template Type"::Assets]) then
+                exit;
+        end else
+            if GenJnlLine."Source Code" <> SourceCodeSetup.Purchases then
+                exit;
+
         GeneralLedgerSetup.Get();
         if not GeneralLedgerSetup."Ex. Rate By Doc Date" then
             exit;
