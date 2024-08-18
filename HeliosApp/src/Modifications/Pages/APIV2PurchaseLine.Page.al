@@ -909,13 +909,11 @@ page 50015 "APIV2 - Purchase Line"
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 1, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
-                    Visible = DimVisible1;
                 }
                 field(Shortcut_Dimension_2_Code; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 2, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
-                    Visible = DimVisible2;
                 }
                 field(ShortcutDimCode3; ShortcutDimCode[3])
                 {
@@ -924,8 +922,6 @@ page 50015 "APIV2 - Purchase Line"
                     TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3),
                                                                   "Dimension Value Type" = const(Standard),
                                                                   Blocked = const(false));
-                    Visible = DimVisible3;
-
                     trigger OnValidate()
                     begin
                         Rec.ValidateShortcutDimCode(3, ShortcutDimCode[3]);
@@ -940,8 +936,6 @@ page 50015 "APIV2 - Purchase Line"
                     TableRelation = "Dimension Value".Code where("Global Dimension No." = const(4),
                                                                   "Dimension Value Type" = const(Standard),
                                                                   Blocked = const(false));
-                    Visible = DimVisible4;
-
                     trigger OnValidate()
                     begin
                         Rec.ValidateShortcutDimCode(4, ShortcutDimCode[4]);
@@ -956,8 +950,6 @@ page 50015 "APIV2 - Purchase Line"
                     TableRelation = "Dimension Value".Code where("Global Dimension No." = const(5),
                                                                   "Dimension Value Type" = const(Standard),
                                                                   Blocked = const(false));
-                    Visible = DimVisible5;
-
                     trigger OnValidate()
                     begin
                         Rec.ValidateShortcutDimCode(5, ShortcutDimCode[5]);
@@ -972,8 +964,6 @@ page 50015 "APIV2 - Purchase Line"
                     TableRelation = "Dimension Value".Code where("Global Dimension No." = const(6),
                                                                   "Dimension Value Type" = const(Standard),
                                                                   Blocked = const(false));
-                    Visible = DimVisible6;
-
                     trigger OnValidate()
                     begin
                         Rec.ValidateShortcutDimCode(6, ShortcutDimCode[6]);
@@ -988,8 +978,6 @@ page 50015 "APIV2 - Purchase Line"
                     TableRelation = "Dimension Value".Code where("Global Dimension No." = const(7),
                                                                   "Dimension Value Type" = const(Standard),
                                                                   Blocked = const(false));
-                    Visible = DimVisible7;
-
                     trigger OnValidate()
                     begin
                         Rec.ValidateShortcutDimCode(7, ShortcutDimCode[7]);
@@ -1004,8 +992,6 @@ page 50015 "APIV2 - Purchase Line"
                     TableRelation = "Dimension Value".Code where("Global Dimension No." = const(8),
                                                                   "Dimension Value Type" = const(Standard),
                                                                   Blocked = const(false));
-                    Visible = DimVisible8;
-
                     trigger OnValidate()
                     begin
                         Rec.ValidateShortcutDimCode(8, ShortcutDimCode[8]);
@@ -1022,31 +1008,6 @@ page 50015 "APIV2 - Purchase Line"
     begin
         UseAllocationAccountNumber := AllocationAccountMgt.UseAllocationAccountNoField();
         SetOpenPage();
-
-        SetDimensionsVisibility();
-        SetOverReceiptControlsVisibility();
-        SetItemReferenceVisibility();
-    end;
-
-    local procedure SetDimensionsVisibility()
-    var
-        DimMgt: Codeunit DimensionManagement;
-    begin
-        DimVisible1 := false;
-        DimVisible2 := false;
-        DimVisible3 := false;
-        DimVisible4 := false;
-        DimVisible5 := false;
-        DimVisible6 := false;
-        DimVisible7 := false;
-        DimVisible8 := false;
-
-        DimMgt.UseShortcutDims(
-          DimVisible1, DimVisible2, DimVisible3, DimVisible4, DimVisible5, DimVisible6, DimVisible7, DimVisible8);
-
-        Clear(DimMgt);
-
-        OnAfterSetDimensionsVisibility();
     end;
 
     local procedure SetOpenPage()
@@ -1066,29 +1027,7 @@ page 50015 "APIV2 - Purchase Line"
         ShowNonDedVATInLines := NonDeductibleVAT.ShowNonDeductibleVATInLines();
     end;
 
-    local procedure SetOverReceiptControlsVisibility()
     var
-        OverReceiptMgt: Codeunit "Over-Receipt Mgt.";
-    begin
-        OverReceiptAllowed := OverReceiptMgt.IsOverReceiptAllowed();
-    end;
-
-    local procedure SetItemReferenceVisibility()
-    var
-        ItemReference: Record "Item Reference";
-    begin
-        ItemReferenceVisible := not ItemReference.IsEmpty();
-    end;
-
-    var
-        DimVisible1: Boolean;
-        DimVisible2: Boolean;
-        DimVisible3: Boolean;
-        DimVisible4: Boolean;
-        DimVisible5: Boolean;
-        DimVisible6: Boolean;
-        DimVisible7: Boolean;
-        DimVisible8: Boolean;
         UseAllocationAccountNumber: Boolean;
         SuppressTotals: Boolean;
         BackgroundErrorCheck: Boolean;
@@ -1096,16 +1035,10 @@ page 50015 "APIV2 - Purchase Line"
         PurchasesPayablesSetup: Record "Purchases & Payables Setup";
         ShowNonDedVATInLines: Boolean;
         OverReceiptAllowed: Boolean;
-        ItemReferenceVisible: Boolean;
 
     protected var
         ShortcutDimCode: array[8] of Code[20];
 
-
-    [IntegrationEvent(true, false)]
-    local procedure OnAfterSetDimensionsVisibility()
-    begin
-    end;
 
     [IntegrationEvent(true, false)]
     local procedure OnBeforeSetOpenPage()
