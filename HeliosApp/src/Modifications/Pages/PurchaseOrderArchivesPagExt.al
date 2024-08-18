@@ -1,8 +1,14 @@
-pageextension 50028 PostedPurchInvoicePageExt extends "Posted Purchase Invoice"
+pageextension 50030 PurchaseOrderArchivesPagExt extends "Purchase Order Archives"
 {
     layout
     {
-        addbefore("Purchaser Code")
+
+        modify("Currency Code")
+        {
+            Visible = true;
+        }
+        moveafter("Buy-from Vendor Name"; "Currency Code")
+        addafter("Currency Code")
         {
             field("Assigned User ID"; Rec."Assigned User ID")
             {

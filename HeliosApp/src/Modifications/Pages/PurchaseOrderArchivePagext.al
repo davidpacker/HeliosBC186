@@ -1,4 +1,4 @@
-pageextension 50028 PostedPurchInvoicePageExt extends "Posted Purchase Invoice"
+pageextension 50031 PurchaseOrderArchivePagext extends "Purchase Order Archive"
 {
     layout
     {

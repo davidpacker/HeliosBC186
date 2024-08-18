@@ -1,8 +1,8 @@
-pageextension 50028 PostedPurchInvoicePageExt extends "Posted Purchase Invoice"
+pageextension 50029 PostedPurchaseInvoicesPagExt extends "Posted Purchase Invoices"
 {
     layout
     {
-        addbefore("Purchaser Code")
+        addafter("Currency Code")
         {
             field("Assigned User ID"; Rec."Assigned User ID")
             {
