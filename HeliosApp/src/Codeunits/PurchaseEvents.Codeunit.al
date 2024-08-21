@@ -33,4 +33,9 @@ codeunit 50002 "Purchase Events Helios"
             Error('The Tax Invoice No. %1 already exists in another purchase order. %2', Rec."Vendor Invoice No.", PurchaseHeader."No.");
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", OnBeforePurchInvHeaderInsert, '', false, false)]
+    local procedure PurchPost_OnBeforePurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header"; CommitIsSupressed: Boolean)
+    begin
+            PurchInvHeader."Assigned User ID" := PurchHeader."Assigned User ID";
+    end;
 }
