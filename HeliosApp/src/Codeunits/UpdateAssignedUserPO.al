@@ -1,28 +1,33 @@
 codeunit 50003 "Update Assigned User PO"
 {
     Permissions = tabledata "Purch. Inv. Header" = m;
-    trigger OnRun()
+    Subtype = Upgrade;
+
+    trigger OnUpgradePerCompany()
+    var
+        myInt: Integer;
     begin
         UpdateAssignedUserPO();
     end;
+
 
     local procedure UpdateAssignedUserPO()
     var
         PurchInvHeader: Record "Purch. Inv. Header";
         PurchaseHeader: Record "Purchase Header";
         PurchaseHeaderArchive: Record "Purchase Header Archive";
-        MyDialog: Dialog;
-        DialogLbl: Label 'Posted Purchase Invoice: #1 \ % #2';
+        // MyDialog: Dialog;
+        // DialogLbl: Label 'Posted Purchase Invoice: #1 \ % #2';
         TotalCount: Integer;
         Counter: Integer;
         CurrentPct: Decimal;
     begin
         PurchInvHeader.SetLoadFields("Assigned User ID", "Order No.");
-        PurchInvHeader.SetRange("Assigned User ID", '');
+        PurchInvHeader.SetFilter("Assigned User ID", '%1', '');
         PurchInvHeader.SetFilter("Order No.", '<>%1', '');
         if PurchInvHeader.FindSet() then begin
             TotalCount := PurchInvHeader.Count();
-            MyDialog.Open(DialogLbl, PurchInvHeader."No.", CurrentPct);
+            // MyDialog.Open(DialogLbl, PurchInvHeader."No.", CurrentPct);
             Counter := 0;
             repeat
                 PurchaseHeader.SetLoadFields("Assigned User ID");
@@ -41,11 +46,11 @@ codeunit 50003 "Update Assigned User PO"
                         PurchInvHeader.Modify();
                     end
                 end;
-                Counter += 1;
-                CurrentPct := Round(((Counter / TotalCount) * 100), 0.01, '>');
-                MyDialog.Update();
+            // Counter += 1;
+            // CurrentPct := Round(((Counter / TotalCount) * 100), 0.01, '>');
+            // MyDialog.Update();
             until PurchInvHeader.Next() = 0;
-            MyDialog.Close();
+            // MyDialog.Close();
         end;
     end;
 }
