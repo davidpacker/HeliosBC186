@@ -36,6 +36,22 @@ codeunit 50002 "Purchase Events Helios"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", OnBeforePurchInvHeaderInsert, '', false, false)]
     local procedure PurchPost_OnBeforePurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header"; CommitIsSupressed: Boolean)
     begin
-            PurchInvHeader."Assigned User ID" := PurchHeader."Assigned User ID";
+        PurchInvHeader."Assigned User ID" := PurchHeader."Assigned User ID";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"FA Ledger Entry", 'OnAfterInsertEvent', '', false, false)]
+    local procedure FALedgerEntryOnAfterInsertEvent(var Rec: Record "FA Ledger Entry"; RunTrigger: Boolean)
+    var
+        FALedgerEntry: Record "FA Ledger Entry";
+    begin
+        if Rec."FA Posting Type" = Rec."FA Posting Type"::"Acquisition Cost" then begin
+            FALedgerEntry.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
+            FALedgerEntry.SetRange("FA Posting Type", Rec."FA Posting Type"::"Acquisition Cost");
+            FALedgerEntry.SetRange("FA No.", Rec."FA No.");
+            FALedgerEntry.SetRange("Depreciation Book Code", Rec."Depreciation Book Code");
+            if not FALedgerEntry.FindFirst() then begin
+                // TODO - FA Add - Currency Factor logics
+            end;
+        end;
     end;
 }
