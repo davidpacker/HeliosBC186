@@ -42,16 +42,21 @@ codeunit 50002 "Purchase Events Helios"
     [EventSubscriber(ObjectType::Table, Database::"FA Ledger Entry", 'OnAfterInsertEvent', '', false, false)]
     local procedure FALedgerEntryOnAfterInsertEvent(var Rec: Record "FA Ledger Entry"; RunTrigger: Boolean)
     var
-        FALedgerEntry: Record "FA Ledger Entry";
+        LFALedgerEntry: Record "FA Ledger Entry";
+        LGLEntry: Record "G/L Entry";
+        LFADepreciationBook: Record "FA Depreciation Book";
     begin
         if Rec."FA Posting Type" = Rec."FA Posting Type"::"Acquisition Cost" then begin
-            FALedgerEntry.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
-            FALedgerEntry.SetRange("FA Posting Type", Rec."FA Posting Type"::"Acquisition Cost");
-            FALedgerEntry.SetRange("FA No.", Rec."FA No.");
-            FALedgerEntry.SetRange("Depreciation Book Code", Rec."Depreciation Book Code");
-            if not FALedgerEntry.FindFirst() then begin
-                // TODO - FA Add - Currency Factor logics
-            end;
+            LFALedgerEntry.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
+            LFALedgerEntry.SetRange("FA Posting Type", Rec."FA Posting Type"::"Acquisition Cost");
+            LFALedgerEntry.SetRange("FA No.", Rec."FA No.");
+            LFALedgerEntry.SetRange("Depreciation Book Code", Rec."Depreciation Book Code");
+            if not LFALedgerEntry.FindFirst() then
+                if LGLEntry.Get(Rec."G/L Entry No.") then
+                    if LFADepreciationBook.Get(Rec."FA No.", Rec."Depreciation Book Code") then begin
+                        LFADepreciationBook.Validate("FA Add.-Currency Factor", LGLEntry."Additional-Currency Amount" / LGLEntry.Amount);
+                        LFADepreciationBook.Modify();
+                    end;
         end;
     end;
 }
