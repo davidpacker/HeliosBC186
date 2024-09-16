@@ -36,6 +36,27 @@ codeunit 50002 "Purchase Events Helios"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", OnBeforePurchInvHeaderInsert, '', false, false)]
     local procedure PurchPost_OnBeforePurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header"; CommitIsSupressed: Boolean)
     begin
-            PurchInvHeader."Assigned User ID" := PurchHeader."Assigned User ID";
+        PurchInvHeader."Assigned User ID" := PurchHeader."Assigned User ID";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"FA Ledger Entry", 'OnAfterInsertEvent', '', false, false)]
+    local procedure FALedgerEntryOnAfterInsertEvent(var Rec: Record "FA Ledger Entry"; RunTrigger: Boolean)
+    var
+        LFALedgerEntry: Record "FA Ledger Entry";
+        LGLEntry: Record "G/L Entry";
+        LFADepreciationBook: Record "FA Depreciation Book";
+    begin
+        if Rec."FA Posting Type" = Rec."FA Posting Type"::"Acquisition Cost" then begin
+            LFALedgerEntry.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
+            LFALedgerEntry.SetRange("FA Posting Type", Rec."FA Posting Type"::"Acquisition Cost");
+            LFALedgerEntry.SetRange("FA No.", Rec."FA No.");
+            LFALedgerEntry.SetRange("Depreciation Book Code", Rec."Depreciation Book Code");
+            if not LFALedgerEntry.FindFirst() then
+                if LGLEntry.Get(Rec."G/L Entry No.") then
+                    if LFADepreciationBook.Get(Rec."FA No.", Rec."Depreciation Book Code") then begin
+                        LFADepreciationBook.Validate("FA Add.-Currency Factor", LGLEntry."Additional-Currency Amount" / LGLEntry.Amount);
+                        LFADepreciationBook.Modify();
+                    end;
+        end;
     end;
 }
