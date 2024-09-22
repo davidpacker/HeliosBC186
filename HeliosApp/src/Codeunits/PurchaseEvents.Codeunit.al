@@ -43,8 +43,10 @@ codeunit 50002 "Purchase Events Helios"
     local procedure FALedgerEntryOnAfterInsertEvent(var Rec: Record "FA Ledger Entry"; RunTrigger: Boolean)
     var
         LFALedgerEntry: Record "FA Ledger Entry";
-        LGLEntry: Record "G/L Entry";
         LFADepreciationBook: Record "FA Depreciation Book";
+        ExchangeRateMgt: Record "Currency Exchange Rate";
+        GeneralLedgerSetup: Record "General Ledger Setup";
+        Date_: Date;
     begin
         if Rec."FA Posting Type" = Rec."FA Posting Type"::"Acquisition Cost" then begin
             LFALedgerEntry.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
@@ -52,11 +54,17 @@ codeunit 50002 "Purchase Events Helios"
             LFALedgerEntry.SetRange("FA No.", Rec."FA No.");
             LFALedgerEntry.SetRange("Depreciation Book Code", Rec."Depreciation Book Code");
             if not LFALedgerEntry.FindFirst() then
-                if LGLEntry.Get(Rec."G/L Entry No.") then
-                    if LFADepreciationBook.Get(Rec."FA No.", Rec."Depreciation Book Code") then begin
-                        LFADepreciationBook.Validate("FA Add.-Currency Factor", LGLEntry."Additional-Currency Amount" / LGLEntry.Amount);
-                        LFADepreciationBook.Modify();
-                    end;
+                if LFADepreciationBook.Get(Rec."FA No.", Rec."Depreciation Book Code") then begin
+                    GeneralLedgerSetup.GetRecordOnce();
+                    if GeneralLedgerSetup."Additional Reporting Currency" = '' then
+                        exit;
+                    if GeneralLedgerSetup."Ex. Rate By Doc Date" then
+                        Date_ := Rec."Document Date"
+                    else
+                        Date_ := Rec."Posting Date";
+                    LFADepreciationBook.Validate("FA Add.-Currency Factor", ExchangeRateMgt.ExchangeRate(Date_, GeneralLedgerSetup."Additional Reporting Currency"));
+                    LFADepreciationBook.Modify();
+                end;
         end;
     end;
 }
