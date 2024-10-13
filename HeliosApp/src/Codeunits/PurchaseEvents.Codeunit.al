@@ -36,6 +36,35 @@ codeunit 50002 "Purchase Events Helios"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", OnBeforePurchInvHeaderInsert, '', false, false)]
     local procedure PurchPost_OnBeforePurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header"; CommitIsSupressed: Boolean)
     begin
-            PurchInvHeader."Assigned User ID" := PurchHeader."Assigned User ID";
+        PurchInvHeader."Assigned User ID" := PurchHeader."Assigned User ID";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"FA Ledger Entry", 'OnAfterInsertEvent', '', false, false)]
+    local procedure FALedgerEntryOnAfterInsertEvent(var Rec: Record "FA Ledger Entry"; RunTrigger: Boolean)
+    var
+        LFALedgerEntry: Record "FA Ledger Entry";
+        LFADepreciationBook: Record "FA Depreciation Book";
+        ExchangeRateMgt: Record "Currency Exchange Rate";
+        GeneralLedgerSetup: Record "General Ledger Setup";
+        Date_: Date;
+    begin
+        if Rec."FA Posting Type" = Rec."FA Posting Type"::"Acquisition Cost" then begin
+            LFALedgerEntry.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
+            LFALedgerEntry.SetRange("FA Posting Type", Rec."FA Posting Type"::"Acquisition Cost");
+            LFALedgerEntry.SetRange("FA No.", Rec."FA No.");
+            LFALedgerEntry.SetRange("Depreciation Book Code", Rec."Depreciation Book Code");
+            if not LFALedgerEntry.FindFirst() then
+                if LFADepreciationBook.Get(Rec."FA No.", Rec."Depreciation Book Code") then begin
+                    GeneralLedgerSetup.GetRecordOnce();
+                    if GeneralLedgerSetup."Additional Reporting Currency" = '' then
+                        exit;
+                    if GeneralLedgerSetup."Ex. Rate By Doc Date" then
+                        Date_ := Rec."Document Date"
+                    else
+                        Date_ := Rec."Posting Date";
+                    LFADepreciationBook.Validate("FA Add.-Currency Factor", ExchangeRateMgt.ExchangeRate(Date_, GeneralLedgerSetup."Additional Reporting Currency"));
+                    LFADepreciationBook.Modify();
+                end;
+        end;
     end;
 }
