@@ -18,15 +18,15 @@
       "version": "22.0.0.0"
     },
     {
-      "id": "485e93c9-796c-4aaa-a206-760fe3682d6c",
+      "id": "0a3f4e5c-4885-4326-a56c-2f6edce892c6",
       "publisher": "abra IT",
       "name": "8921_VendProformaInvoice",
       "version": "22.0.0.0"
     }
   ],
   "screenshots": [],
-  "platform": "11.0.0.0",
-  "application": "11.0.0.0",
+  "platform": "24.0.0.0",
+  "application": "24.0.0.0",
   "idRanges": [
     {
       "from": 50000,
@@ -34,7 +34,7 @@
     }
   ],
   "propagateDependencies": true,
-  "runtime": "11.0",
+  "runtime": "12.0",
   "features": [
     "NoImplicitWith"
   ]
