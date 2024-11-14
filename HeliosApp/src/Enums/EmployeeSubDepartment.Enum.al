@@ -26,5 +26,9 @@ enum 50002 "Employee Sub Department"
     {
         Caption = 'General';
     }
+    value(5; Engineering)
+    {
+        Caption = 'Engineering';
+    }
 
 }
