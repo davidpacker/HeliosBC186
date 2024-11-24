@@ -26,5 +26,9 @@ enum 50004 "Employee Lifecycle Status"
     {
         Caption = 'Parental Leave';
     }
+    value(6; "Unpaid Leave")
+    {
+        Caption = 'Unpaid Leave';
+    }
 
 }
