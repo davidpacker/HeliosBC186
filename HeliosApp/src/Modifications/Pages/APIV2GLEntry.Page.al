@@ -363,17 +363,13 @@ page 50013 "APIV2 - G/L Entry"
                 {
                     Caption = 'Source Name';
                 }
-                field("CurrencyCode"; Rec."Currency Code")
+                field("SourceCurrencyCode"; Rec."Source Currency Code")
                 {
-                    Caption = 'Currency Code';
+                    Caption = 'Source Currency Code';
                 }
-                field("CurrencyFactor"; Rec."Currency Factor")
+                field("SourceCurrencyAmount"; Rec."Source Currency Amount")
                 {
-                    Caption = 'Currency Factor';
-                }
-                field("AmountFCY"; Rec."Amount FCY")
-                {
-                    Caption = 'Amount FCY';
+                    Caption = 'Source Currency Amount';
                 }
                 field("Proforma"; Rec.BCIL_Proforma)
                 {
